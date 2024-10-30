@@ -1,13 +1,13 @@
 <!-- src/App.vue -->
 <template>
-  <div id="app" class="flex h-screen">
+  <div id="app" class="flex flex-row h-screen">
     <!-- Left Column (NavBar) -->
     <div
       id="NavBar"
-      class="w-1/4 h-full flex flex-col border-r-4 border-gray-300"
+      class="w-1/4 flex flex-col border-r-4 border-gray-300"
     >
       <!-- Navbar -->
-      <div class="flex flex-col space-y-2 p-4">
+      <div class="flex flex-col space-y-2 p-4 h-full">
         <button
           @click="activeTab = 'Chat'"
           :class="buttonClasses('Chat')"
@@ -28,7 +28,6 @@
         </button>
       </div>
     </div>
-
     <!-- Main Content -->
     <div
       id="MainContent"
@@ -49,7 +48,7 @@ export default {
   methods: {
     buttonClasses(tab) {
       return {
-        'tab-button p-2 border-b-2 border-gray-300 rounded transition-colors': true,
+        'tab-button flex-1 p-2 border-b-2 border-gray-300 rounded transition-colors': true,
         'bg-blue-500 text-white': this.activeTab === tab,
         'bg-gray-200 text-black': this.activeTab !== tab,
       };
