@@ -13,5 +13,5 @@
   </script>
   
   <style scoped>
-  /* Add any specific styles for ChatC here */
-  </style>0
+  /* Add any specific styles for Chat here */
+  </style>
