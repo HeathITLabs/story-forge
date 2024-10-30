@@ -1,28 +1,28 @@
 <!-- src/App.vue -->
 <template>
-  <div id="app" class="flex flex-col md:flex-row h-screen">
+  <div id="app" class="flex h-screen">
     <!-- Left Column (NavBar) -->
-    <div 
-      id="NavBar" 
-      class="w-full md:w-1/4 flex flex-col md:flex-none border-r border-border"
+    <div
+      id="NavBar"
+      class="w-1/4 h-full flex flex-col border-r-4 border-gray-300"
     >
       <!-- Navbar -->
-      <div class="flex flex-row space-x-2 p-4">
-        <button 
-          @click="activeTab = 'Chat'" 
-          :class="buttonClasses('Chat')" 
+      <div class="flex flex-col space-y-2 p-4">
+        <button
+          @click="activeTab = 'Chat'"
+          :class="buttonClasses('Chat')"
         >
           Chat
         </button>
-        <button 
-          @click="activeTab = 'Snippets'" 
-          :class="buttonClasses('Snippets')" 
+        <button
+          @click="activeTab = 'Snippets'"
+          :class="buttonClasses('Snippets')"
         >
           Snippets
         </button>
-        <button 
-          @click="activeTab = 'Codex'" 
-          :class="buttonClasses('Codex')" 
+        <button
+          @click="activeTab = 'Codex'"
+          :class="buttonClasses('Codex')"
         >
           Codex
         </button>
@@ -30,14 +30,11 @@
     </div>
 
     <!-- Main Content -->
-    <div 
-      id="MainContent" 
-      class="flex-1 p-4 flex flex-col items-center justify-start md:justify-center"
+    <div
+      id="MainContent"
+      class="flex-1 p-4 flex flex-col items-center justify-start"
     >
-      <!-- Components -->
-      <Chat v-if="activeTab === 'Chat'" />
-      <Snippets v-if="activeTab === 'Snippets'" />
-      <Codex v-if="activeTab === 'Codex'" />
+      <component :is="activeTab"></component>
     </div>
   </div>
 </template>
@@ -52,8 +49,9 @@ export default {
   methods: {
     buttonClasses(tab) {
       return {
-        'tab-button flex-1 border border-border p-2': true,
-        'bg-primary text-primary-foreground': this.activeTab === tab,
+        'tab-button p-2 border-b-2 border-gray-300 rounded transition-colors': true,
+        'bg-blue-500 text-white': this.activeTab === tab,
+        'bg-gray-200 text-black': this.activeTab !== tab,
       };
     },
   },
@@ -72,6 +70,6 @@ export default {
 }
 
 .tab-button:hover {
-  background-color: var(--hover-background-color);
+  background-color: rgb(229, 231, 235); /* Tailwind's gray-200 */
 }
 </style>
